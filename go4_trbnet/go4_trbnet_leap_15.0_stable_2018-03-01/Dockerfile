@@ -49,7 +49,9 @@ RUN zypper ref && zypper --non-interactive in \
   perl-File-chdir \
   perl-TimeDate \
   gzip \
-  tig
+  tig \
+  python-numpy \
+  dialog
 
 
 ### install perl modules from cpan ###
