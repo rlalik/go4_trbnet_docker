@@ -61,45 +61,20 @@ RUN pip install --upgrade pip && pip install prettytable python2-pythondialog
 
 
 ##################################################
-##          select stable repositories          ##
-##################################################
-
-### stable versions of git/svn repos to checkout ###
-
-#ENV TRBNET_COMMIT=master
-
-ENV TRBNET_COMMIT=02cf41a486d64bc894986fe87c174bfe1b07fc9b 
-# newest version of trbnettools does not work with this system ... revert to older commit ###
-# has something to do with commit 0cd022a9b0bda2213989eef118a1dda077794ba9 
-# 2019-01-24 00:17 Michael Traxler ----  added -ltirpc in Makesfiles for a working RPC implementation, mt 
-# commit breaks rpc communication
-
-
-##################################################
-
-
-#ENV DAQTOOLS_COMMIT=master
-
-ENV DAQTOOLS_COMMIT=4840d304ad9cce93ffe972ef8cff4c325d7ac198 
-# newest commit from 2018-02-28
-
-
-##################################################
-
-#ENV DABC_TRB3_REV=HEAD
-
-ENV DABC_TRB3_REV=4242
-# newest commit from 2018-02-28
-
-
-##################################################
 ##              Go4 + dabc + root               ##
 ##################################################
 
-### check out revision 4242, newest revision from today 2019-02-28 ###
+# newest commit
+#ENV DABC_TRB3_REV=HEAD
+
+# newest commit from 2018-02-28
+ENV DABC_TRB3_REV=4242 
+
+##################################################
+
 RUN svn checkout -r $DABC_TRB3_REV https://subversion.gsi.de/dabc/trb3  
 
-RUN cd /trb3; make -j2; make_exit_value=$?; \
+RUN cd /trb3; make -j4; make_exit_value=$?; \
   echo -e "\n\n---- display make log: ----\n\n"; \
   cat $(find . -iname "makelog.txt"); \
   $( exit $make_exit_value )
@@ -110,7 +85,17 @@ RUN cd /trb3; make -j2; make_exit_value=$?; \
 ##                    trbnet                    ##
 ##################################################
 
+# newest commit
+#ENV TRBNET_COMMIT=master
 
+# last stable commit
+ENV TRBNET_COMMIT=02cf41a486d64bc894986fe87c174bfe1b07fc9b 
+# newest version of trbnettools does not work with this system ... revert to older commit ###
+# has something to do with commit 0cd022a9b0bda2213989eef118a1dda077794ba9 
+# 2019-01-24 00:17 Michael Traxler ----  added -ltirpc in Makesfiles for a working RPC implementation, mt 
+# commit breaks rpc communication
+
+##################################################
 
 RUN git clone git://jspc29.x-matter.uni-frankfurt.de/projects/trbnettools.git &&\
   cd /trbnettools &&\
@@ -131,6 +116,14 @@ ENV PATH=$PATH:/trbnettools/bin
 
 ##################################################
 ##                   daqtools                   ##
+##################################################
+
+# newest commit
+#ENV DAQTOOLS_COMMIT=master
+
+# newest commit from 2018-02-28
+ENV DAQTOOLS_COMMIT=4840d304ad9cce93ffe972ef8cff4c325d7ac198 
+
 ##################################################
 
 RUN git clone git://jspc29.x-matter.uni-frankfurt.de/projects/daqtools.git && \
