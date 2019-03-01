@@ -76,10 +76,17 @@ ENV DABC_TRB3_REV=4242
 
 RUN svn checkout -r $DABC_TRB3_REV https://subversion.gsi.de/dabc/trb3  
 
-RUN cd /trb3; make -j2; make_exit_value=$?; \
+RUN cd /trb3; \
+  > /tmp/trb3_make_exit_value; \
+  { make -j2; echo $? > /tmp/trb3_make_exit_value; killall tail; }& \
   echo -e "\n\n---- display make log: ----\n\n"; \
-  cat $(find . -iname "makelog.txt"); \
-  $( exit $make_exit_value )
+  tail -F ./stream/makelog.txt & \
+  tail -F ./go4/makelog.txt & \
+  tail -F ./dabc/makelog.txt & \
+  tail -F ./rootbuild/makelog.txt & \
+  wait; \
+  echo -e "\n\n---- end of make log: ----\n\n"; \
+  $( exit $(cat /tmp/trb3_make_exit_value) )
 
 
 
