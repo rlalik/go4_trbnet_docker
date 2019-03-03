@@ -2,7 +2,7 @@
 ##     get prebuilt image from docker cloud     ##
 ##################################################
 
-FROM acidbourbon/go4_trbnet_leap_15.0:stable_2018-03-01
+FROM acidbourbon/go4_trbnet_leap_15.0:stable_2019-03-01
 # see prebuilt_Dockerfile for "content" of prebuilt image
 
 
