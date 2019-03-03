@@ -143,7 +143,7 @@ $ sudo service docker start
 
 -- step 1 --
 get the go4_trbnet dockerfiles
-$ git clone git@jspc29.x-matter.uni-frankfurt.de:dockerfiles
+$ git clone git://jspc29.x-matter.uni-frankfurt.de/projects/dockerfiles.git
 $ cd go4_trbnet
 
 when you read this README, you have already done this step
