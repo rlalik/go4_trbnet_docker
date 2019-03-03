@@ -13,12 +13,12 @@ export CTS_GUI_PORT=1148
 export CTS_ENDPOINT=0xc035
 export DISPLAY=:2 # go4 window will be sent to $DISPLAY, if provide_vnc == yes , then it will be this x11 display
 
-export PULSER=192.168.103.74
 
 > conf_log.txt
 
-provide_dhcp=yes
+provide_dhcp=no
 #edit conf/dhcpd.conf, enter your trb3 MAC address ###
+
 provide_trbnetd=yes
 
 provide_cts_gui=yes
@@ -63,9 +63,7 @@ if [ $provide_trbnetd == "yes" ]; then
 fi
 
 if [ $provide_cts_gui == "yes" ]; then
-#   screen -S cts_gui -d -m ./start_cts_gui.sh
   tmux new-session -d -s cts_gui -n cts_gui "cd /daqtools/web; perl ./cts_gui --endpoint $CTS_ENDPOINT --quiet --noopenxterm --port $CTS_GUI_PORT"
-#   tmux new-window -t main:1 -n "cts_gui" "cd /daqtools/web; perl ./cts_gui --endpoint $CTS_ENDPOINT --quiet --noopenxterm --port $CTS_GUI_PORT"
   echo ... >> conf_log.txt
   echo started cts_gui with following parameters:>> conf_log.txt
   echo --endpoint $CTS_ENDPOINT >> conf_log.txt
@@ -93,7 +91,7 @@ fi
 /daqtools/tools/loadregisterdb.pl register_configgbe.db
 /daqtools/tools/loadregisterdb.pl register_configgbe_ip.db
 sleep 1
-./conf_cts.sh
+#./conf_cts.sh ### here you could call a cts settings dump ...
 ./conf_tdcs.sh
 
 

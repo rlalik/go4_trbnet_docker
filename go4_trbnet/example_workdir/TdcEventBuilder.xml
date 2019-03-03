@@ -124,9 +124,10 @@ When starting analysis from the go4 gui, one should specify stream server with p
 
        <!--  this is stream server for online monitoring, normally always on -->
        <OutputPort name="Output0" url="mbs://Stream:6789?iter=hadaq_iter&subid=0x1f"/>
+       <OutputPort name="Output1" url="mbs://Stream:6790?iter=hadaq_iter&subid=0x1f"/>
 
        <!--  this is example of HLD file storage - local and RFIO -->
-       <OutputPort name="Output1" url="hld:///tmp/TDC_data.hld?maxsize=2000"/>
+       <!--OutputPort name="Output1" url="hld:///tmp/TDC_data.hld?maxsize=2000"/>
        <!--OutputPort name="Output1" url="hld:///linev/path/dabc.hld?maxsize=1900&rfio"/-->
 
        <DoShmControl value="false"/>  
