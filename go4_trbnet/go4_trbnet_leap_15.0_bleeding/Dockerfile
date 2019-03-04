@@ -67,10 +67,10 @@ RUN pip install --upgrade pip && pip install prettytable python2-pythondialog
 ##################################################
 
 # newest commit
-#ENV DABC_TRB3_REV=HEAD
+ENV DABC_TRB3_REV=HEAD
 
 # newest commit from 2018-02-28
-ENV DABC_TRB3_REV=4242 
+#ENV DABC_TRB3_REV=4242 
 
 ##################################################
 
@@ -95,10 +95,10 @@ RUN cd /trb3; \
 ##################################################
 
 # newest commit
-#ENV TRBNET_COMMIT=master
+ENV TRBNET_COMMIT=master
 
 # last stable commit
-ENV TRBNET_COMMIT=02cf41a486d64bc894986fe87c174bfe1b07fc9b 
+#ENV TRBNET_COMMIT=02cf41a486d64bc894986fe87c174bfe1b07fc9b 
 # newest version of trbnettools does not work with this system ... revert to older commit ###
 # has something to do with commit 0cd022a9b0bda2213989eef118a1dda077794ba9 
 # 2019-01-24 00:17 Michael Traxler ----  added -ltirpc in Makesfiles for a working RPC implementation, mt 
@@ -128,10 +128,10 @@ ENV PATH=$PATH:/trbnettools/bin
 ##################################################
 
 # newest commit
-#ENV DAQTOOLS_COMMIT=master
+ENV DAQTOOLS_COMMIT=master
 
 # newest commit from 2018-02-28
-ENV DAQTOOLS_COMMIT=4840d304ad9cce93ffe972ef8cff4c325d7ac198 
+#ENV DAQTOOLS_COMMIT=4840d304ad9cce93ffe972ef8cff4c325d7ac198 
 
 ##################################################
 

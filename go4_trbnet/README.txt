@@ -155,14 +155,21 @@ when you read this README, you have already done this step
 
 
 -- step 2 --
-Now you have two options:
+Now you have three options:
 
   - Option 1: Start with a minimal opensuse leap 15.0, compile all TRB3 software from sources:
+    Use stable commits/revisions of the source repositories.
     $ cd go4_trbnet_leap_15.0_stable_2019-03-01
 
   - Option 2: Start with a completely prebuilt container from the cloud. Speeds up things ...
     $ cd go4_trbnet_leap_15.0_stable_2018-03-01_prebuilt
+    ### RECOMMENDED ###
 
+  - Option 3: Like Option 1 but use newest sources (bleeding edge)
+    $ cd go4_trbnet_leap_15.0_bleeding
+    ### DISCOURAGED ###
+
+  NOTE: You can start with a stable build and easily update individual components later.
 
 -- step 3 --
 
@@ -182,7 +189,7 @@ In this directory you find:
       - trbnetd
       - CTS gui backend + DAQ control webserver
       - vncserver (for Go4 and other graphical applications)
-      - dhcp server for 
+      - dhcp server for setting the IP address of your TRB
     (look at conf.sh it is pretty straightforward, adapt to your needs)
     
   - workdir/ 
