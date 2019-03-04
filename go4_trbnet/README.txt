@@ -29,7 +29,11 @@ Furthermore:
 
 ## The solution: ##
 
-We put all software components in a docker container.
+We put all software components in a Docker container.
+Such a container (named "go4_trbnet")
+has been prepared for you and is ready to use!
+
+If you know what Docker is then skip the next section.
 
 
 ##################################################
@@ -84,7 +88,8 @@ How are such containers created/managed?
     no time, as docker simply removes some binary layers from
     the image.
   - Think of a docker container as a "binary SVN" of a 
-    small linux distro.
+    small linux distro. Each command in the Dockerfile is like
+    a commit.
   - As a by-product of setting up your container,
     you get a fool-prof/tested/certified
     step-by-step compilation/installation manual (the Dockerfile)
@@ -95,12 +100,12 @@ How are such containers created/managed?
 
 Typical use:
   - A container is started and stopped like an application,
-    and not like a virtual machine.
-  - Once the Dockerfile is completely compiled, the container
-    can be started again and again in a matter of seconds.
+    much unlike a virtual machine.
+  - Once the container is built/compiled from the Dockerfile,
+    it can be started in a matter of seconds.
   - When its job is done, the container is destroyed again.
   - On destruction, the container forgets everything that
-    happened while it was running. On the next start, it starts
+    happened while it was running. On the next start, it is
     exactly in the last state defined by the Dockerfile.
 
 
@@ -144,7 +149,7 @@ $ sudo service docker start
 -- step 1 --
 get the go4_trbnet dockerfiles
 $ git clone git://jspc29.x-matter.uni-frankfurt.de/projects/dockerfiles.git
-$ cd go4_trbnet
+$ cd dockerfiles/go4_trbnet
 
 when you read this README, you have already done this step
 
