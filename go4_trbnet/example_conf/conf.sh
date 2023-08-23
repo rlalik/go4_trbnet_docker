@@ -6,9 +6,10 @@ cd /conf
 
 echo "configure container"
 
+export LIBTRBNET=/trbnettools/libtrbnet/libtrbnet.so
 export TRB3_PORT=35
 export DAQOPSERVER=localhost:$TRB3_PORT
-export TRB3_SERVER=192.168.4.240
+export TRB3_SERVER=192.168.5.24
 export CTS_GUI_PORT=1148
 export CTS_ENDPOINT=0xc035
 export DISPLAY=:2 # go4 window will be sent to $DISPLAY, if provide_vnc == yes , then it will be this x11 display
@@ -16,7 +17,7 @@ export DISPLAY=:2 # go4 window will be sent to $DISPLAY, if provide_vnc == yes ,
 
 > conf_log.txt
 
-provide_dhcp=no
+provide_dhcp=yes
 #edit conf/dhcpd.conf, enter your trb3 MAC address ###
 
 provide_trbnetd=yes
@@ -44,7 +45,7 @@ vnc_geometry=1500x1024
 
 if [ $provide_dhcp == "yes" ]; then
   echo starting dhcp server
-  cp dhcpd.conf /etc/dhcpd.conf
+  cp dhcpd.conf /etc/dhcp/dhcpd.conf
   > /tmp/dhcp_leasefile
   dhcpd -lf /tmp/dhcp_leasefile
   echo ... >> conf_log.txt

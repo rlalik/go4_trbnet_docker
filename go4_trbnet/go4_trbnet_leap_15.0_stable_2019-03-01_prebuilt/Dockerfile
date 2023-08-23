@@ -39,28 +39,28 @@ FROM acidbourbon/go4_trbnet_leap_15.0:stable_2019-03-01
 ##               update daqtools                ##
 ##################################################
 
-#RUN cd /daqtools; git checkout master; git pull &&\
-#  cd /daqtools/xml-db && \
-# ./xml-db.pl
+RUN cd /daqtools; git checkout master; git pull &&\
+  cd /daqtools/xml-db && \
+ ./xml-db.pl
 
 ### overwrite httpi again with a custom version so it can run as root
-#COPY build_files/httpi /daqtools/web/httpi 
+COPY build_files/httpi /daqtools/web/httpi
 
 
 ##################################################
 ##              update trbnettools              ##
 ##################################################
 
-#RUN  cd /trbnettools &&\
-#  git checkout master &&\
-#  git pull &&\
-#  cd /trbnettools/libtrbnet_perl && \
-#  perl Makefile.PL && \
-#  cd /trbnettools && \
-#  make clean && \
-#  make TRB3=1 && \
-#  make TRB3=1 install && \
-#  ldconfig -v
+RUN  cd /trbnettools &&\
+  git checkout master &&\
+  git pull &&\
+  cd /trbnettools/libtrbnet_perl && \
+  perl Makefile.PL && \
+  cd /trbnettools && \
+  make clean && \
+  make TRB3=1 && \
+  make TRB3=1 install && \
+  ldconfig -v
 
 
 

@@ -1,0 +1,33 @@
+diff --git a/libtrbnet/Makefile b/libtrbnet/Makefile
+index 29313c7..1f422cf 100644
+--- a/libtrbnet/Makefile
++++ b/libtrbnet/Makefile
+@@ -21,7 +21,7 @@ else
+ 	endif
+ endif
+ 
+-INCDIR = -I.
++INCDIR = -I. -I/usr/include/tirpc/
+ CPPFLAGS += #-DTRB_DEBUGGER  #-DHEXMODE 
+ 
+ CFLAGS = -pipe -g -Wall  -Winline -O3 -fPIC -finline-functions -finline-limit=600000
+diff --git a/libtrbnet/Makefilesim b/libtrbnet/Makefilesim
+index de0a169..737b4ce 100644
+--- a/libtrbnet/Makefilesim
++++ b/libtrbnet/Makefilesim
+@@ -21,13 +21,13 @@ else
+ 	endif
+ endif
+ 
+-INCDIR = -I.
++INCDIR = -I. -I/usr/include/tirpc/
+ CPPFLAGS += #-DTRB_DEBUGGER  #-DHEXMODE 
+ 
+ CFLAGS = -pipe -g -Wall  -Winline -O3 -fPIC -finline-functions -finline-limit=600000
+ 
+ LD = $(CC)
+-LDFLAGS = -lm
++LDFLAGS = -lm -ltirpc
+ LIBDIR =
+ LOADLIBES =
+ 
